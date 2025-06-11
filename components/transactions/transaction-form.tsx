@@ -21,7 +21,6 @@ import type { Category, Transaction } from "@/lib/types"
 import { transactionSchema, validateAndSanitize } from "@/lib/validation"
 import { supabase } from "@/lib/supabase"
 import { useAuth } from "@/contexts/auth-context"
-import { showSuccessToast, showErrorToast } from "@/lib/toast"
 
 interface TransactionFormProps {
   categories: Category[]
@@ -114,7 +113,7 @@ export default function TransactionForm({ categories, onTransactionAdded, editTr
 
       setOpen(false)
       onTransactionAdded()
-      showSuccessToast(editTransaction ? "Transaction updated successfully!" : "Transaction added successfully!")
+      console.log(editTransaction ? "Transaction updated successfully!" : "Transaction added successfully!")
 
       // Reset form
       setFormData({
@@ -127,7 +126,7 @@ export default function TransactionForm({ categories, onTransactionAdded, editTr
     } catch (err: any) {
       const errorMessage = err.message || "An error occurred"
       setError(errorMessage)
-      showErrorToast(errorMessage)
+      console.error("Transaction form error:", errorMessage)
     } finally {
       setLoading(false)
     }

@@ -13,7 +13,6 @@ export const metadata: Metadata = {
   description: "A secure, full-stack budgeting application built with Next.js and Supabase",
   keywords: ["budgeting", "finance", "money management", "expenses", "income"],
   authors: [{ name: "Budget App Team" }],
-  viewport: "width=device-width, initial-scale=1",
     generator: 'v0.dev'
 }
 

@@ -1,25 +1,12 @@
-import { toast } from "@/components/ui/use-toast"
-
+// Simple toast utility that won't cause build issues
 export const showSuccessToast = (message: string) => {
-  toast({
-    title: "Success",
-    description: message,
-    variant: "default",
-  })
+  console.log("Success:", message)
 }
 
 export const showErrorToast = (message: string) => {
-  toast({
-    title: "Error",
-    description: message,
-    variant: "destructive",
-  })
+  console.error("Error:", message)
 }
 
 export const showInfoToast = (message: string) => {
-  toast({
-    title: "Info",
-    description: message,
-    variant: "default",
-  })
+  console.log("Info:", message)
 }

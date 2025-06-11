@@ -20,7 +20,6 @@ import type { Category, Budget } from "@/lib/types"
 import { budgetSchema, validateAndSanitize } from "@/lib/validation"
 import { supabase } from "@/lib/supabase"
 import { useAuth } from "@/contexts/auth-context"
-import { showSuccessToast, showErrorToast } from "@/lib/toast"
 
 interface BudgetFormProps {
   categories: Category[]
@@ -44,7 +43,7 @@ export default function BudgetForm({
 
   const [formData, setFormData] = useState({
     category_id: editBudget?.category_id || "",
-    amount: editBudget?.amount || "",
+    amount: editBudget?.amount?.toString() || "",
     month: editBudget?.month || currentMonth,
     year: editBudget?.year || currentYear,
   })
@@ -121,7 +120,7 @@ export default function BudgetForm({
 
       setOpen(false)
       onBudgetAdded()
-      showSuccessToast(editBudget ? "Budget updated successfully!" : "Budget added successfully!")
+      console.log(editBudget ? "Budget updated successfully!" : "Budget added successfully!")
 
       // Reset form
       setFormData({
@@ -133,7 +132,7 @@ export default function BudgetForm({
     } catch (err: any) {
       const errorMessage = err.message || "An error occurred"
       setError(errorMessage)
-      showErrorToast(errorMessage)
+      console.error("Budget form error:", errorMessage)
     } finally {
       setLoading(false)
     }
